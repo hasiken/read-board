@@ -1,0 +1,75 @@
+<div class="container bg-light">
+<div class="row">
+  <div class="col-sm-10 mx-auto">
+    <h4 class="py-4 text-center ">本のレビューを書く</h4>
+
+    <%= form_with(model: @review, local: true, class: "bg-white px-5 pt-5") do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+      
+      <div class="form-group col-sm-9">
+        <span class="badge badge-danger">必須</span><%= f.label :title, '本のタイトル', class: "col-sm-3" %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+      
+      
+    <div class="form-row pl-3">
+     <div class="col-sm-3">
+      <div class="form-group ">
+        <span class="badge badge-danger">必須</span><%= f.label :useful, '満足度' %>
+        <%= f.select :useful, {'とても高い': "とても高い",'高い': "高い", "低い": "低い", "とても低い":"とても低い"},{ include_blank: '満足度'}, {class: 'form-control'} %>
+      </div>
+     </div>
+     
+     <div class="col-sm-3">
+      <div class="form-group">
+        <span class="badge badge-danger">必須</span><%= f.label :easy, '難易度' %>
+        <%= f.select :easy, {'難しい': "難しい",'普通': "普通", "簡単": "簡単" },{ include_blank: '難易度'}, {class: 'form-control'} %>
+      </div>
+     </div>
+    </div>
+    
+      <div class="form-group col-sm-5 ">
+        <span class="badge badge-danger">必須</span><%= f.label :genre, 'ジャンル' %>
+        <%= f.select :genre, {'ビジネス教養': "ビジネス教養",'ドキュメンタリー': "ドキュメンタリー", "自己啓発": "自己啓発",'開業': "開業",'業界': "業界"},{ include_blank: '選択してください'}, {class: 'form-control'} %>
+      </div>
+      
+      <p class="mb-0 ml-3"><span class="badge badge-danger">必須</span>画像</p>
+      <div class="form-group col-sm-9 pl-0">
+       <div class=" input-group">
+      　 <div class="custom-file">
+         <%= f.file_field :image, class: "form-control-file", id: "inputFile" %>
+         <%= f.label :image, "ファイルを選択してください", class: "custom-file-label", for: "inputFile" %>
+         </div>
+         <div class="input-group-append">
+          <button type="button" class="btn btn-outline-secondary reset">取消</button>
+         </div>
+       </div>
+      </div>
+      
+      <div class="form-group col-sm-12 ">
+        <span class="badge badge-danger">必須</span><%= f.label :content, 'レビュー', class: "col-sm-3" %>
+        <%= f.text_area :content, class: 'form-control', rows: "8" %>
+      </div>
+    
+      <p class="help-block pl-3">※1200文字以内で書いてください</p>
+      
+      <div class="form-group col-sm-6 ">
+        <span class="badge badge-danger">必須</span><%= f.label :time, '読み終えるまでにかかった時間' %>
+        <%= f.text_field :time, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group col-sm-9 ">
+        <span class="badge badge-danger">必須</span><%= f.label :introduction, 'url' %>
+        <%= f.text_field :introduction, class: 'form-control' %>
+      </div>
+      
+      
+      <div class="form-group col-sm-9 ">
+         <span class="badge badge-danger">必須</span><%= f.label :tag_list, "タグ" %>
+         <%= f.text_field :tag_list, value: @review.tag_list.join(','), class: "form-control" %>
+      </div>
+      
+      <%= f.submit '登録', class: 'btn btn-primary btn-block col-sm-3 mx-auto' %>
+    <% end %>
+  </div>
+</div>
