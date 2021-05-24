@@ -1,3 +1,48 @@
-<h1>id: <%= @review.id %> のメッセージ詳細ページ</h1>
 
-<p><%= @review.title %></p>
+<div class="col-sm-10 mx-auto mt-5">
+ <div class="row border rounded mx-auto">
+  <div class="col-sm-3 pt-3 pb-3">
+     <%= image_tag @review.image.url, class: "img-fluid", alt: "Responsive image" %>
+  </div>
+  <div class="col-sm-9 pt-3 pb-3">
+      <div class="col-sm-7">
+        <h1><%= @review.title %></h1>
+      </div>
+      <div class="col">
+        <p>ジャンル：<%= link_to @review.genre,"#" %></p>
+      </div>
+      <div class="col mb-2">
+        <i class="far fa-check-square"></i>
+        難易度：<%= @review.easy %>
+        <i class="far fa-check-square"></i>
+        役に立ったか：<%= @review.useful %>
+      </div>
+      <div class="col mb-4">
+       <i class="far fa-clock"></i>
+        読み終わるまでに掛かった時間：<%= @review.time %>
+      </div>
+      <div class="col mb-4">
+       <a class="btn-warning btn-lg" href=<%= @review.introduction %> role="button"><i class =" fab fa-amazon"></i> Amazon購入ページ</a>
+      </div>
+      
+      <div class="col">
+       <i class="fas fa-hashtag"></i>タグ一覧：
+       <% @tags.each do |tag| %>
+         <a class="btn btn-outline-info " href=<%= link_to "#{tag.name}" %></a>
+       <% end %>
+      </div>
+      
+  </div>
+ </div>
+</div>
+
+<div class="col-sm-10 mx-auto mt-5">
+  <h3>感想・レビュー・書評</h3>
+  <div class="border rounded mx-auto">
+      <div class="col mb-4">
+        <%=safe_join(@review.content.split("\n"),tag(:br))%>
+      </div>
+  </div>
+</div>
+
+

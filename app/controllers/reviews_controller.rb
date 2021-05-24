@@ -24,6 +24,7 @@ class ReviewsController < ApplicationController
     
     def show
        @review = Review.find(params[:id])
+       @tags = @review.tag_counts_on(:tags)
     end
     
     def destroy
