@@ -1,10 +1,79 @@
-<% if logged_in? %>
-  <p>ログイン完了ユーザ: <%= current_user.name %></p>
-<% else %>
-  <div class="center jumbotron">
-    <div class="text-center">
-      <h1>Welcome to the Microposts</h1>
-      <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
+<!DOCTYPE html>
+<html  lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Microposts</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+    <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
+  </head>
+  <header>
+  <nav class="navbar navbar-expand-sm" style="background-color:#ff917a;">
+    <a class="navbar-brand text-white"  href="/"><i class="fas fa-book-open"></i> B Review Book</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-3">
+        <% if logged_in? %>
+          <form class="form-inline my-2 my-lg-0 mr-3">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+          <a class="text-white d-flex align-items-center mr-3" href="#"><i class="fas fa-cog"></i></a>
+          <li class="nav-item dropdown">
+          <div class="input-group">
+            <a href="#" class="text-white nav-link dropdown-toggle" data-toggle="dropdown"><i class="fas fa-child"></i></a>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li class="dropdown-item"><%= link_to 'My profile', user_path(current_user) %></li>
+              <li class="dropdown-divider"></li>
+              <li class="dropdown-item">Logout</li>
+            </ul>
+          </li>
+        <% else %>
+          <li class="nav-item"><%= link_to 'Signup', signup_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to 'Login', login_path, class: 'nav-link' %></li>
+          <li class="dropdown-item"><%= link_to 'Logout', logout_path, method: :delete %></li>
+        <% end %>
+      </ul>
     </div>
+  </nav>
+  <nav class="navbar navbar-expand-sm" style="background-color:#ffd5cc">
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <%= link_to reviews_path, class: "nav-link text-dark", :method => :get do %>
+         <i class="fas fa-book"></i> 一覧ページ
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to new_review_path, class: "nav-link text-dark", :method=> :get do %>
+          <i class="far fa-clipboard"></i> 投稿
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-dark" href="#"><i class="fas fa-book-open"></i> B Review Bookとは</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link text-dark" href="#"><i class="fas fa-exclamation-circle"></i>お知らせ<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-dark" href="#"><i class="fas fa-question"></i> ヘルプ</a>
+      </li>
+    </ul>
   </div>
-<% end %>
+  </nav>
+</header>
+<div class="max" >
+  
+</div>

@@ -1,4 +1,4 @@
-
+<div class="container">
 <div class="col-sm-10 mx-auto mt-5">
  <div class="row border rounded mx-auto">
   <div class="col-sm-3 pt-3 pb-3">
@@ -15,7 +15,7 @@
         <i class="far fa-check-square"></i>
         難易度：<%= @review.easy %>
         <i class="far fa-check-square"></i>
-        役に立ったか：<%= @review.useful %>
+        満足度：<%= @review.useful %>
       </div>
       <div class="col mb-4">
        <i class="far fa-clock"></i>
@@ -37,12 +37,13 @@
 </div>
 
 <div class="col-sm-10 mx-auto mt-5">
-  <h3>感想・レビュー・書評</h3>
+  <h3 class="mb-4">感想・レビュー・書評</h3>
   <div class="border rounded mx-auto">
-      <div class="col mb-4">
+      <div class="col px-3 pt-3 mb-3">
         <%=safe_join(@review.content.split("\n"),tag(:br))%>
       </div>
   </div>
+</div>
 </div>
 
 

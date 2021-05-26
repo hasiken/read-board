@@ -4,6 +4,7 @@ class ReviewsController < ApplicationController
   
     def index
       @reviews = Review.all
+      
     end
   
     def new
@@ -14,7 +15,7 @@ class ReviewsController < ApplicationController
         @review = current_user.reviews.build(review_params)
         if @review.save
           flash[:success] = 'メッセージを投稿しました。'
-          redirect_to root_url
+          redirect_to @review
         else
           @review = current_user.reviews.order(id: :desc).page(params[:page])
           flash.now[:danger] = 'メッセージの投稿に失敗しました。'

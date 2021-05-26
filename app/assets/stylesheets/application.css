@@ -13,3 +13,6 @@
  *= require_tree .
  *= require_self
  */
+ 
+.fa-child{font-size: 1.5em;}
+.fa-cog{font-size: 1.5em;}

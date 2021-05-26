@@ -1,0 +1,30 @@
+<div class="border-top t30M mb-5">
+<h2 class="px-5 pt-5">レビュー 新着</h2>
+</div>
+<div class="container mb-5">
+<div>
+  <ul class="list-unstyled row flex-nowrap">
+    <% @reviews.each do |review| %>
+      <li class= "col-sm-3 media">
+      <div class="col-sm-6">
+        <%= image_tag review.image.url, class: "img-fluid card-img-top"  %>
+    　</div>
+    　<div class="col-sm-9 px-0">
+       <div>
+        <h4><%= review.title %></h4>
+       </div>
+       <div class="mb-2 ">
+        <%= review.user.name %>さん<br>のレビュー
+       </div>
+       <div>
+         <i class="fas fa-angle-double-right"></i>
+         <%= link_to "レビューを読む", review %>
+       </div>
+      </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+</div>
+<div class="border-top t30M mb-5">
+</div>
